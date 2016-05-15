@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+body { margin: 0;}
+/*第一个div滚动例子*/
+.wrap { width: 500px; height: 600px; background: rgba(0,0,0,0.2); border: 1px solid orange;}
+.aa { width: 100px; height: 100px; background: red; margin-bottom: 10px; transition: all 2s ease;}
+.bb { width: 100px; height: 100px; background: red; margin-bottom: 10px; transition: all 2s ease-in;}
+.cc { width: 100px; height: 100px; background: red; margin-bottom: 10px; transition: all 3s ease-out;}
+.dd { width: 100px; height: 100px; background: red; margin-bottom: 10px; transition: all 3s ease-in-out;}
+.ee { width: 100px; height: 100px; background: red; margin-bottom: 10px; transition: all 3s linear;}
+.wrap:hover div{ background: green; /*width: 200px;*/ border-radius: 20px; transform: rotate(360deg); margin-left: 300px;}
+/*第二个悬浮图片淡入淡出*/
+.ff{ position: absolute; transition: all 1s ease-in 1s;}
+.ff:hover { opacity: 0; filter: alpha(opacity=0);}
+/*第三个点击图片淡入淡出*/
+.gg{ position: absolute; transition: opacity 0.5s ease-in;}
+.gg_fadeIn { opacity: 0; filter: alpha(opacity=0); }
+</style>
+<script type="text/javascript">
+	window.onload = function () {
+	var oImg = document.getElementById("click_img_wrap").getElementsByTagName("img");
+	oImg[0].onclick = function(){
+			var cl = this.className;
+			if (/fade/.test(cl)) {
+					this.className = "gg";
+				} else {
+						this.className = "gg gg_fadeIn";
+					}
+		}
+	};
+</script>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="aa">ease</div>
+    <div class="bb">ease-in</div>
+    <div class="cc">ease-out</div>
+    <div class="dd">ease-in-out</div>
+    <div class="ee">linear</div>
+</div>
+
+<div class="img_wrap" >
+	<a href="javascript:(void=0)" style="display: block;">
+        <img src="images/often/4.jpg" style="width: 150px; height: 150px; " class="ff"/>
+        <img src="images/often/1.jpg" style="width: 150px; height: 150px; " />
+    </a>
+</div>
+
+<div class="img_wrap" id="click_img_wrap">
+	<a href="javascript:(void=0)" style="display: block;">
+        <img src="images/often/2.jpg" style="width: 150px; height: 150px; " class="gg"/>
+        <img src="images/often/3.jpg" style="width: 150px; height: 150px; " />
+    </a>
+</div>
+</body>
+</html>
